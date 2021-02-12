@@ -33,4 +33,12 @@ defmodule Strings do
 
     Enum.map(res, &IO.puts(&1))
   end
+
+  def capitalize_sentences(str) do
+    String.split(str, ". ")
+    |> Enum.filter(&(&1 != ""))
+    |> Enum.map(&String.capitalize(&1))
+    |> Enum.join(". ")
+    |> (&(&1 <> ".")).()
+  end
 end

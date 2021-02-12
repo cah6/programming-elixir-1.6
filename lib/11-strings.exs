@@ -18,4 +18,19 @@ defmodule Strings do
       '*' -> x * y
     end
   end
+
+  def pretty_print(xs) do
+    ls = Enum.map(xs, &String.length(&1))
+    max_len = Enum.max(ls)
+    zipped = Enum.zip(xs, ls)
+
+    pad = fn {str, length} ->
+      pad = Integer.floor_div(max_len - length, 2)
+      String.pad_trailing(String.pad_leading(str, length + pad), length + pad * 2)
+    end
+
+    res = Enum.map(zipped, pad)
+
+    Enum.map(res, &IO.puts(&1))
+  end
 end

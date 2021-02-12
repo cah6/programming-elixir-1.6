@@ -1,5 +1,5 @@
 defmodule Strings do
-  def isAscii(str) do
-    Enum.all?(Enum.map(str, &(&1 >= 32 && &1 <= 126)))
+  def is_ascii(str) do
+    Enum.all?(Enum.map(str, &(&1 >= ?\s && &1 <= ?~)))
   end
 end
